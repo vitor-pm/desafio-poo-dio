@@ -1,63 +1,82 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.artnomic.desafio.dominio.*;
+
 
 import java.time.LocalDate;
 
+
+
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
+        Curso cursoJava = new Curso();
+        cursoJava.setTitulo("Curso Java");
+        cursoJava.setDescricao("Neste curso, aprenda sobre linguagem java");
+        cursoJava.setCargaHoraria(20);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
+        Curso cursoSpringBoot = new Curso();
+        cursoSpringBoot.setTitulo("Curso Spring Boot");
+        cursoSpringBoot.setDescricao("Curso de Spring, um FrameWork Java");
+        cursoSpringBoot.setCargaHoraria(6);
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
+        Mentoria mentoriaIntellij = new Mentoria();
+        mentoriaIntellij.setTitulo("Mentoria IDE - Intellij");
+        mentoriaIntellij.setDescricao("Aprenda os Atalhos, os Truques e Plugins para ser mais produtivo no Intellij");
+        mentoriaIntellij.setData(LocalDate.now());
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        Mentoria mentoriaMercadoJava = new Mentoria();
+        mentoriaMercadoJava.setTitulo("Mentoria - Mercado Java");
+        mentoriaMercadoJava.setDescricao("Tenha uma mentoria completa sobre o mercado de trabalho");
+        mentoriaMercadoJava.setData(LocalDate.now().plusDays(1));
+
+        Bootcamp bootcampJavaPlus = new Bootcamp();
+        bootcampJavaPlus.setNome("Bootcamp Java ++");
+        bootcampJavaPlus.setDescricao("Um BootCamp avan�ado de Java");
+        bootcampJavaPlus.getConteudos().add(cursoJava);
+        bootcampJavaPlus.getConteudos().add(cursoSpringBoot);
+        bootcampJavaPlus.getConteudos().add(mentoriaIntellij);
+        bootcampJavaPlus.getConteudos().add(mentoriaMercadoJava);
+
+        System.out.println("---------------------------------------------------------------------");
+
+        Dev devMichael = new Dev();
+        devMichael.setNome("Michael");
+        devMichael.inscreverBootcamp(bootcampJavaPlus);
+        System.out.println("Conteudos Inscritos Michael: " + devMichael.getConteudoInscritos());
+        devMichael.progredir();
+        devMichael.progredir();
+        devMichael.progredir();
+        devMichael.progredir();
+        System.out.println("----- LISTA ATUALIZADA -----");
+        System.out.println("Conteudos Inscritos Michael: " + devMichael.getConteudoInscritos());
+        System.out.println("Conteudos Concluidos Michael: " + devMichael.getConteudoConcluidos());
+        System.out.println("XP: " + devMichael.calcularTotalXp());
+
+        System.out.println("---------------------------------------------------------------------");
+
+        Dev devBruno = new Dev();
+        devBruno.setNome("Bruno");
+        devBruno.inscreverBootcamp(bootcampJavaPlus);
+        System.out.println("Conteúdos Inscritos Bruno: " + devBruno.getConteudoInscritos());
+        devBruno.progredir();
+        System.out.println("----- LISTA ATUALIZADA -----");
+        System.out.println("Conteudos Inscritos Bruno: " + devBruno.getConteudoInscritos());
+        System.out.println("Conteudos Concluidos Bruno: " + devBruno.getConteudoConcluidos());
+        System.out.println("XP: " + devBruno.calcularTotalXp());
+
+        System.out.println("---------------------------------------------------------------------");
 
         Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
+        devCamila.setNome("Jhonatan");
+        devCamila.inscreverBootcamp(bootcampJavaPlus);
+        System.out.println("Conteudo Inscritos Camila: " + devCamila.getConteudoInscritos());
         devCamila.progredir();
         devCamila.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+        devCamila.progredir();
+        System.out.println("----- LISTA ATUALIZADA -----");
+        System.out.println("Conteudo Inscritos Camila: " + devCamila.getConteudoInscritos());
+        System.out.println("ConteudosConcluidos Camila: " + devCamila.getConteudoConcluidos());
+        System.out.println("XP: " + devCamila.calcularTotalXp());
 
-        System.out.println("-------");
-
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
-
+        System.out.println("---------------------------------------------------------------------");
     }
-
 }
